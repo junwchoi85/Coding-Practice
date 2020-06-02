@@ -1,4 +1,4 @@
-package com.hackerrank.problemsolving;
+package com.hackerrank.problemsolving.warmup;
 
 import java.io.*;
 import java.lang.reflect.Array;
