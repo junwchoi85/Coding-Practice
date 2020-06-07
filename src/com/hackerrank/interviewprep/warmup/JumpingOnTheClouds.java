@@ -18,8 +18,25 @@ public class JumpingOnTheClouds {
          * My approach is to check next-next cloud and jump 2 if possible. */
         //set initial jump count and next index.
         int jumpCnt = 0;
-        int index = 0;
+        final int shortJump = 0;
+        final int longJump = 1;
+        int nextIndex = 1;
 
+        do{
+            //must jump.
+            if(c[nextIndex]==1) {
+                nextIndex = nextIndex + longJump;
+                ++jumpCnt;
+            } else if(c[nextIndex]==0) {
+                if((nextIndex+1<c.length) && (c[nextIndex+1]==0)) {
+                    //ok, then make long jump
+                    nextIndex = nextIndex + longJump;
+                } else {
+                    nextIndex = nextIndex + shortJump;
+                }
+                ++jumpCnt;
+            }
+        } while(++nextIndex<c.length);
         return jumpCnt;
     }
 
