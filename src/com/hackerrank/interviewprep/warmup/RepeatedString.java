@@ -8,30 +8,25 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-
+/**
+ * url : https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+ */
 public class RepeatedString {
     // Complete the repeatedString function below.
     static long repeatedString(String s, long n) {
         final char a = 'a';
-
-
-
-
-
-
+        //instead of concatenating every String, let's just count the 'a's.
         long aCount = 0;
-
-        long initialLength = s.length();
-        long totalLength = 0;
-
-
-        StringBuilder sb = new StringBuilder(s);
-        while(totalLength<n) {
-            sb = sb.append(s);
-            totalLength += initialLength;
+        for(int i=0; i<s.length(); i++) {
+            if(a==s.charAt(i)) {
+                ++aCount;
+            }
         }
-        for(int i=0; i<n; i++) {
-            if(a== sb.charAt(i)) {
+        long quotient=n/s.length();
+        aCount*=quotient;
+        long remainder=n%s.length();
+        for(int i=0; i<remainder; i++) {
+            if(a==s.charAt(i)) {
                 ++aCount;
             }
         }
