@@ -15,7 +15,21 @@ class Difference {
         this.elements = a;
     }
     public void computeDifference() {
-        
+        //how about we sort the list first, than take the smallest and the biggest element.
+        //here, we'll do bubble sort.
+        for(int i=0; i<this.elements.length-1; i++) {
+            for(int j=0; j<this.elements.length-1-i; j++) {
+                if (elements[j] > elements[j+1]) {
+                    //swap two element.
+                    int temp = elements[j];
+                    elements[j] = elements[j+1];
+                    elements[j+1] = temp;
+                }
+            }
+        }
+        //End of Bubble sort.
+
+        this.maximumDifference = elements[elements.length-1] - elements[0];
     }
 } // End of Difference class
 
