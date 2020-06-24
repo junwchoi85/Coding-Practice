@@ -1,19 +1,18 @@
 package com.hackerrank.thirtydays;
 
 import java.util.*;
-import java.io.*;
 
-class Node{
-    Node left,right;
+class Node3 {
+    Node3 left,right;
     int data;
-    Node(int data){
+    Node3(int data){
         this.data=data;
         left=right=null;
     }
 }
 
 public class BinarySearchTrees {
-    public static int getHeight(Node root){
+    public static int getHeight(Node3 root){
         //Write your code here
         int lHeight, rHeight;
         if(root.left==null) {
@@ -30,12 +29,12 @@ public class BinarySearchTrees {
         return 1 + (lHeight>rHeight ? lHeight : rHeight);
     }
 
-    public static Node insert(Node root,int data){
+    public static Node3 insert(Node3 root, int data){
         if(root==null){
-            return new Node(data);
+            return new Node3(data);
         }
         else{
-            Node cur;
+            Node3 cur;
             if(data<=root.data){
                 cur=insert(root.left,data);
                 root.left=cur;
@@ -50,7 +49,7 @@ public class BinarySearchTrees {
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         int T=sc.nextInt();
-        Node root=null;
+        Node3 root=null;
         while(T-- > 0){
             int data=sc.nextInt();
             root=insert(root,data);
