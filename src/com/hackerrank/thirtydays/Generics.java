@@ -10,8 +10,10 @@ class Printer <T> {
      *    @param A generic array
      **/
     // Write your code here
-    <T> void printArray() {
-
+    <T> void printArray(T[] array) {
+        for(T element : array) {
+            System.out.println(element.toString());
+        }
     }
 }
 public class Generics {

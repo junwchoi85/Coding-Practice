@@ -16,23 +16,23 @@ SAMPLE OUTPUT
  */
 public class LinkedList {
 
-    public static  Node insert(Node head,int data) {
+    public static  NodeLinkedList insert(NodeLinkedList head,int data) {
         //Complete this method
         //If the list is empty, create a new node.
         if(head==null) {
-            head = new Node(data);
+            head = new NodeLinkedList(data);
         } else {
-            Node start = head;
+            NodeLinkedList start = head;
             while(start.next!=null) {
                 start = start.next;
             }
-            start.next = new Node(data);
+            start.next = new NodeLinkedList(data);
         }
         return head;
     }
 
-    public static void display(Node head) {
-        Node start = head;
+    public static void display(NodeLinkedList head) {
+        NodeLinkedList start = head;
         while(start != null) {
             System.out.print(start.data + " ");
             start = start.next;
@@ -41,7 +41,7 @@ public class LinkedList {
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        Node head = null;
+        NodeLinkedList head = null;
         int N = sc.nextInt();
 
         while(N-- > 0) {
@@ -53,10 +53,10 @@ public class LinkedList {
     }
 }
 
-class Node {
+class NodeLinkedList {
     int data;
-    Node next;
-    Node(int d) {
+    NodeLinkedList next;
+    NodeLinkedList(int d) {
         data = d;
         next = null;
     }
