@@ -2,6 +2,7 @@ package com.hackerrank.thirtydays;
 
 import java.util.*;
 import java.io.*;
+import java.util.LinkedList;
 
 class Node{
     Node left,right;
@@ -14,13 +15,23 @@ class Node{
 public class BSTLevelOrderTraversal {
     static void levelOrder(Node root){
         //Write your code here
-        System.out.print(root.data);
-        if(root.left!=null) {
-            System.out.print(root.left);
-        }
+        Queue<Node> queue = new LinkedList<>();
+        if(root!=null) {
+            queue.add(root);
 
-        levelOrder(root.left);
-        levelOrder(root.right);
+            while(!queue.isEmpty()) {
+                Node n = queue.poll();
+
+                System.out.print(n.data + " ");
+
+                if(n.left != null) {
+                    queue.add(n.left);
+                }
+                if(n.right != null) {
+                    queue.add(n.right);
+                }
+            }
+        }
     }
 
     public static Node insert(Node root,int data){
