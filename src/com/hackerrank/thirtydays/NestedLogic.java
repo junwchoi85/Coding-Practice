@@ -5,7 +5,11 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
-
+/*
+*Sample Input
+31 8 2004
+20 1 2004
+ */
 public class NestedLogic {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -17,10 +21,17 @@ public class NestedLogic {
 
         Period period = Period.between(dateExpected, dateReturned);
         int days = period.getDays();
+        int fine=0;
         if(days>0) {
-            System.out.println(days * 15);
-        }period.
-
+            if(dateExpected.getYear() != dateReturned.getYear()) {
+                fine = 10000;
+            } else if(dateExpected.getMonthValue() != dateReturned.getMonthValue()) {
+                fine = 500*( dateReturned.getMonthValue()-dateExpected.getMonthValue());
+            } else {
+                fine = 15 * days;
+            }
+        }
+        System.out.println(fine);
         scanner.close();
     }
 
