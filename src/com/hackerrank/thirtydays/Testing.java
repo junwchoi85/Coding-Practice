@@ -1,8 +1,10 @@
 package com.hackerrank.thirtydays;
 
+import java.util.Arrays;
 import java.util.*;
 
 public class Testing {
+
     public static int minimum_index(int[] seq) {
         if (seq.length == 0) {
             throw new IllegalArgumentException("Cannot get the minimum value index from an empty sequence");
@@ -18,27 +20,57 @@ public class Testing {
 
     static class TestDataEmptyArray {
         public static int[] get_array() {
-            // complete this function
+            return new int[0];
         }
     }
 
+    /**
+     * return an array of size at least 2 with all unique elements,
+     * while method get_expected_result() of this class has to return the expected minimum value index for this array.
+     */
     static class TestDataUniqueValues {
+        private static int[] seq;
+
         public static int[] get_array() {
-            // complete this function
+            //  complete this function
+            Random random = new Random();
+            seq = new int[10];
+            for(int i=0; i<10; i++) {
+//                seq[i] = random.nextInt(100);
+                seq[i] = i;
+            }
+            return seq;
         }
 
         public static int get_expected_result() {
             // complete this function
+            return 0;
         }
     }
 
+    /*
+     has to return an array where there are exactly two different minimum values,
+     while method get_expected_result() of this class has to return the expected minimum value index for this array.
+     */
     static class TestDataExactlyTwoDifferentMinimums {
         public static int[] get_array() {
             // complete this function
+            List<Integer> list = new ArrayList<>();
+            for(int i=0; i<9; i++) {
+                list.add(i);
+            }
+            list.add(0);
+            Collections.shuffle(list, new Random());
+
+            Integer[] seq = new Integer[10];
+            seq = list.toArray(seq);
+            int[] result= Arrays.stream(seq).mapToInt(Integer::intValue).toArray();
+            return result;
         }
 
         public static int get_expected_result() {
             // complete this function
+            return 0;
         }
     }
 
