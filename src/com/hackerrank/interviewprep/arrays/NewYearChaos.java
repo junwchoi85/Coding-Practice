@@ -1,12 +1,10 @@
 package com.hackerrank.interviewprep.arrays;
 
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import static java.util.stream.Collectors.toList;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 // url: https://www.hackerrank.com/challenges/new-year-chaos/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays&h_r=next-challenge&h_v=zen
 /*
@@ -29,38 +27,47 @@ Sample Input 2
 8
 1 2 5 3 4 7 8 6
  */
-public class NewYearChaos {
 
-    // Complete the minimumBribes function below.
-    static void minimumBribes(int[] q) {
-        
+class Result {
 
-    }
+    /*
+     * Complete the 'minimumBribes' function below.
+     *
+     * The function accepts INTEGER_ARRAY q as parameter.
+     */
 
-    private static final Scanner scanner = new Scanner(System.in);
+    public static void minimumBribes(List<Integer> q) {
+    // Write your code here
 
-    public static void main(String[] args) {
-        int t = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int tItr = 0; tItr < t; tItr++) {
-            int n = scanner.nextInt();
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-            int[] q = new int[n];
-
-            String[] qItems = scanner.nextLine().split(" ");
-            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-            for (int i = 0; i < n; i++) {
-                int qItem = Integer.parseInt(qItems[i]);
-                q[i] = qItem;
-            }
-
-            minimumBribes(q);
-        }
-
-        scanner.close();
     }
 
 }
+
+
+public class NewYearChaos {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int t = Integer.parseInt(bufferedReader.readLine().trim());
+
+        IntStream.range(0, t).forEach(tItr -> {
+            try {
+                int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+                List<Integer> q = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                    .map(Integer::parseInt)
+                    .collect(toList());
+
+                Result.minimumBribes(q);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        bufferedReader.close();
+    }
+
+}
+
+
